@@ -1,16 +1,14 @@
-const http = require("http");
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
-const port = 3000;
-const hostname = "0.0.0.0";
+const port = 4000;
 
 app.use(
-  bodyParser.urlencoded({
+  express.urlencoded({
     extended: true,
   })
 );
-app.use(bodyParser.json());
+app.use(express.json());
+
 const myDetails = {
   slackUsername: "Nafisat Faruk",
   backend: true,
@@ -23,10 +21,10 @@ app.get("/", (request, response) => {
   response.json(myDetails);
 });
 
-app.listen(port, hostname, function (error) {
+app.listen(port, function (error) {
   if (error) {
     console.log("Something went wrong");
   } else {
-    console.log(`Server is listening at ${hostname} on port ${port}`);
+    console.log(`Server is listening on port ${port}`);
   }
 });
